@@ -1,0 +1,70 @@
+@import "tailwindcss";
+@reference "tailwindcss";
+
+@theme {
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-200: #c7d2fe;
+  --color-brand-300: #a5b4fc;
+  --color-brand-400: #818cf8;
+  --color-brand-500: #6366f1;
+  --color-brand-600: #4f46e5;
+  --color-brand-700: #4338ca;
+  --color-brand-800: #3730a3;
+  --color-brand-900: #312e81;
+
+  --shadow-soft: 0 10px 30px -12px rgba(99, 102, 241, 0.25);
+}
+
+/* Base resets and variables */
+@layer base {
+  :root {
+    --radius: 0.75rem;
+  }
+
+  html:focus-within {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100 antialiased;
+  }
+
+  ::selection {
+    @apply bg-brand-200 text-brand-900 dark:bg-brand-700 dark:text-white;
+  }
+}
+
+/* Reusable component styles */
+@layer components {
+  .container-responsive {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .card {
+    @apply rounded-2xl border border-slate-200/70 dark:border-slate-800/80 bg-white/70 dark:bg-slate-900/60 backdrop-blur-sm shadow-sm hover:shadow-soft transition-all duration-300;
+  }
+
+  .btn {
+    @apply inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium ring-offset-2 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/70 focus-visible:ring-offset-transparent;
+  }
+  .btn-primary {
+    @apply bg-brand-600 text-white hover:bg-brand-500 active:bg-brand-700 shadow-sm hover:shadow-soft;
+  }
+  .btn-ghost {
+    @apply bg-transparent border border-slate-300/50 dark:border-slate-700/70 hover:bg-slate-100/60 dark:hover:bg-slate-800/60;
+  }
+  .badge {
+    @apply inline-flex items-center rounded-full border border-slate-200/70 dark:border-slate-800/70 bg-slate-50/60 dark:bg-slate-900/40 px-3 py-1 text-xs font-medium text-slate-700 dark:text-slate-200;
+  }
+}
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
